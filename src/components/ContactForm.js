@@ -1,4 +1,6 @@
 import { useState } from "react";
+console.log("REAL ContactForm LOADED");
+
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

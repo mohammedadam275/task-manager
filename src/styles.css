@@ -22,8 +22,8 @@ body.dark {
   align-items: center;
   padding: 16px 48px;
   background: rgba(17, 24, 39, 0.8);
-  backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -37,6 +37,7 @@ body.dark {
 .logo {
   background: linear-gradient(90deg, #60a5fa, #a78bfa);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -121,6 +122,7 @@ body.dark {
   left: 50%;
   transform: translateX(-50%);
   background: rgba(17, 24, 39, 0.95);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: 14px;
   padding: 12px;
@@ -339,4 +341,3 @@ body.dark .contact-form input::placeholder,
 body.dark .contact-form textarea::placeholder {
   color: #9ca3af;
 }
-
