@@ -8,6 +8,8 @@ export default function ContactForm() {
     comments: ""
   });
 
+  const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -15,40 +17,76 @@ export default function ContactForm() {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page refresh
+
+    // Basic validation
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.comments
+    ) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    console.log("Contact Form Submitted:", formData);
+
+    setSubmitted(true);
+
+    // Clear form after submit
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      comments: ""
+    });
+  };
+
   return (
-    <form className="contact-form">
-      <input
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        value={formData.firstName}
-        onChange={handleChange}
-      />
+    <div className="contact-page">
+      <h2 className="section-title">Contact Us</h2>
 
-      <input
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-        value={formData.lastName}
-        onChange={handleChange}
-      />
+      {submitted && (
+        <p className="success-message">Thanks! Your message has been sent ✅</p>
+      )}
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-      />
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={formData.firstName}
+          onChange={handleChange}
+        />
 
-      <textarea
-        name="comments"
-        placeholder="Comments"
-        value={formData.comments}
-        onChange={handleChange}
-      />
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={formData.lastName}
+          onChange={handleChange}
+        />
 
-      <button type="submit">Submit</button>
-    </form>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        <textarea
+          name="comments"
+          placeholder="Comments"
+          value={formData.comments}
+          onChange={handleChange}
+          rows="4"
+        />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
