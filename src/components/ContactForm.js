@@ -18,9 +18,8 @@ export default function ContactForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page refresh
+    e.preventDefault();
 
-    // Basic validation
     if (
       !formData.firstName ||
       !formData.lastName ||
@@ -35,7 +34,6 @@ export default function ContactForm() {
 
     setSubmitted(true);
 
-    // Clear form after submit
     setFormData({
       firstName: "",
       lastName: "",
